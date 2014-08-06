@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simple Note</title>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="layout">
+        <div id="left-menu">
+            <div class="pure-menu pure-menu-open">
+                <a class="pure-menu-heading">Simple Note</a>
+                <ul>
+                    <li><a href="#"><i class="fa fa-home"></i> Go Home</a></li>
+                    <li class="addTagBlock"><a href="#" id="addTag"><i class="fa fa-tags"></i> Add Tag</a></li>
+                </ul>
+            </div>
+            <div id="left-menu-buttons">
+                <div class="pure-g">
+                    <div class="pure-u-1">
+                        <button id="button-save" class="pure-button"><i class="fa fa-hdd-o"></i> Save</button>
+                    </div>
+                    <div class="pure-u-1">
+                        <button id="button-toggle" class="pure-button"><i class="fa fa-eye"></i> Preview</button>
+                    </div>
+                    <div class="pure-u-1-2">
+                        <button id="button-share" class="pure-button"><i class="fa fa-share"></i> Share</button>
+                    </div>
+                    <div class="pure-u-1-2">
+                        <button id="button-error" class="pure-button"><i class="fa fa-trash-o"></i> Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div id="nav-bar" class="pure-menu pure-menu-open pure-menu-horizontal">
+                <ul id="tag-list">
+                    <li class="pure-menu-selected"><a href="#">Home</a></li>
+                    <li><a href="#">First tag  <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu-disabled">
+                            <li>Untag</li>
+                            <li>Test</li>
+                        </ul></li>
+                    <li><a href="#">Second tag  <i class="fa fa-angle-down"></i></a></li>
+                </ul>
+            </div>
+            <div id="epiceditor">
+            </div>
+        </div>
+    </div>
+<script src="epiceditor/js/epiceditor.min.js"></script>
+<script src="script.js"></script>
+<script type="text/javascript">
+    window.onload=function() {
+        var opts2 = {
+            file: {
+                    name: 'epiceditor-tmp-save',
+                    defaultContent: '',
+                    autoSave: 10000
+                  },
+            button: {
+                    preview: false,
+                    fullscreen: false
+                  }
+        }
+
+        var editor = new EpicEditor(opts2).load();
+
+        EditorContainer.get().setEditor(editor);
+
+        window.document.getElementById('button-save').addEventListener("click", saveNote, false);
+        window.document.getElementById('button-toggle').addEventListener("click", toggleEditor, false);
+        window.document.getElementById('button-error').addEventListener("click", deleteNote, false);
+
+        window.document.getElementById('addTag').addEventListener("click", addTagToggleOn, false);
+
+        var nodesList = window.document.querySelectorAll('.fa-angle-down');
+
+        for (var i = 0; i < nodesList.length; ++i) {
+            nodesList[i].addEventListener('click', function() {
+                var childs = this.parentNode.childNodes;
+                for (var j = 0 ; j < childs.length ; j++) {
+                    if (childs[j].className.contains('dropdown-menu-disabled')) {
+                        childs[j].className = 'dropdown-menu-enabled';
+                    }
+                }
+            }, false);
+        }
+    }
+</script>
+</body>
+</html>
+
