@@ -22,7 +22,6 @@ server {
     location ~ ^/(app|app_dev|config)\.php(/|$) {
         fastcgi_pass unix:/var/run/php5-fpm.sock;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param PATH_INFO $path_info;
         fastcgi_read_timeout 600;
         fastcgi_buffer_size 16k;
         fastcgi_buffers 4 16k; # up to 4k + 128 * 4k
