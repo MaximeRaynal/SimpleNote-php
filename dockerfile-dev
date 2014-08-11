@@ -16,7 +16,7 @@ RUN echo 'deb-src http://ppa.launchpad.net/nginx/stable/ubuntu trusty main' >> /
 RUN apt-get -y update
 
 # Install prerequirement
-RUN apt-get install -y --force-yes nginx php5 vim php5-fpm
+RUN apt-get install -y --force-yes nginx php5 vim php5-fpm multitail
 
 RUN mkdir /var/www/
 
@@ -26,3 +26,8 @@ ADD simplenote-dev.nginx-config /etc/nginx/sites-available/simplenote-dev
 
 RUN ln -s /etc/nginx/sites-available/simplenote-dev /etc/nginx/sites-enabled/simplenote-dev
 RUN rm /etc/nginx/sites-enabled/default
+
+ADD setup.sh /root/setup.sh
+RUN chmod u+x /root/setup.sh
+
+#ENTRYPOINT ["/root/setup.sh"]
