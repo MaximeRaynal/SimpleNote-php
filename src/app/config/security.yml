@@ -1,7 +1,9 @@
 security:
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    test: { password: test, roles: 'ROLE_USER'}
 
     firewalls:
         dev:
@@ -9,4 +11,12 @@ security:
             security: false
 
         default:
+            pattern: ^/
             anonymous: ~
+            http_basic:
+                realm: "Authentification requise"
+    access_control:
+        - { path: ^/, roles: ROLE_USER }
+
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
