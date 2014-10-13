@@ -1,0 +1,3 @@
+simple_note_web_app_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SimpleNoteWebAppBundle:Default:index }

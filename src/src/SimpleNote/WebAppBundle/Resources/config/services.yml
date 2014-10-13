@@ -1,0 +1,7 @@
+parameters:
+#    simple_note_web_app.example.class: SimpleNote\WebAppBundle\Example
+
+services:
+#    simple_note_web_app.example:
+#        class: %simple_note_web_app.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

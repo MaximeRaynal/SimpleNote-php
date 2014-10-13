@@ -1,0 +1,8 @@
+simple_note_web_app:
+    resource: "@SimpleNoteWebAppBundle/Resources/config/routing.yml"
+    prefix:   /
+
+simple_note_note:
+    resource: "@SimpleNoteNoteBundle/Resources/config/routing.yml"
+    prefix:   /
+
