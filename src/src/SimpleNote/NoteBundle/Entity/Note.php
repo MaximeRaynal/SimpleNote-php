@@ -26,7 +26,7 @@ class Note {
 
     private $creationDate;
 
-    private $lastupdateDate;
+    private $lastUpdateDate;
 
     private $author;
 
@@ -36,4 +36,184 @@ class Note {
 
     }
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Note
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Note
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set privacyState
+     *
+     * @param string $privacyState
+     * @return Note
+     */
+    public function setPrivacyState($privacyState)
+    {
+        $this->privacyState = $privacyState;
+
+        return $this;
+    }
+
+    /**
+     * Get privacyState
+     *
+     * @return string
+     */
+    public function getPrivacyState()
+    {
+        return $this->privacyState;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     * @return Note
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * Set lastUpdateDate
+     *
+     * @param \DateTime $lastUpdateDate
+     * @return Note
+     */
+    public function setLastUpdateDate($lastUpdateDate)
+    {
+        $this->lastUpdateDate = $lastUpdateDate;
+
+        return $this;
+    }
+
+    /**
+     * Get lastUpdateDate
+     *
+     * @return \DateTime
+     */
+    public function getLastUpdateDate()
+    {
+        return $this->lastUpdateDate;
+    }
+
+    /**
+     * Set isCrypted
+     *
+     * @param boolean $isCrypted
+     * @return Note
+     */
+    public function setIsCrypted($isCrypted)
+    {
+        $this->isCrypted = $isCrypted;
+
+        return $this;
+    }
+
+    /**
+     * Get isCrypted
+     *
+     * @return boolean
+     */
+    public function getIsCrypted()
+    {
+        return $this->isCrypted;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \SimpleNote\NoteBundle\Entity\Tag $tags
+     * @return Note
+     */
+    public function addTag(\SimpleNote\NoteBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \SimpleNote\NoteBundle\Entity\Tag $tags
+     */
+    public function removeTag(\SimpleNote\NoteBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
 }

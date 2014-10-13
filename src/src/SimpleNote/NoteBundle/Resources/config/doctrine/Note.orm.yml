@@ -1,0 +1,33 @@
+SimpleNote\NoteBundle\Entity\Note:
+    type: entity
+    table: Note
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            unique: true
+        description:
+            type: text
+        privacyState:
+            type: string
+        creationDate:
+            type: datetime
+        lastUpdateDate:
+            type: datetime
+        isCrypted:
+            type: boolean
+
+    manyToMany:
+        tags:
+            targetEntity: Tag
+            joinTable:
+                name: notes_tags
+                joinColumns:
+                    noteId:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    tagId:
+                        referencedColumnName: name

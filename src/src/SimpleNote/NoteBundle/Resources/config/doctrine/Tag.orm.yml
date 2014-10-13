@@ -1,0 +1,9 @@
+SimpleNote\NoteBundle\Entity\Tag:
+    type: entity
+    table: Tag
+    id:
+        name:
+            type: string
+    fields:
+        description:
+            type: text
