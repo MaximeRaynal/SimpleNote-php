@@ -4,5 +4,5 @@ simple_note_web_app:
 
 simple_note_note:
     resource: "@SimpleNoteNoteBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /api/
 
