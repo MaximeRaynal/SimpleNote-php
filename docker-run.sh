@@ -11,4 +11,4 @@ fi
 CURRENT_FOLDER_PATH=$(dirname $(readlink -f $0))
 SOURCE_FOLDER='/src'
 
-docker.io run -i -t -p 8081:80 -v $CURRENT_FOLDER_PATH$SOURCE_FOLDER:/var/www ubuntu:simple-note bash
+docker.io run -i -t -p 8081:80 -v $CURRENT_FOLDER_PATH$SOURCE_FOLDER:/var/www ubuntu:simplenote bash

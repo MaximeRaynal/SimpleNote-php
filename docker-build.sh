@@ -6,4 +6,4 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-docker.io build -t ubuntu:simple-note .
+docker.io build -t ubuntu:simplenote .

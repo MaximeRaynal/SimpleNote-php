@@ -1,8 +1,8 @@
 # Install environment for dev
 #
 # Create image :
-# $ sudo docker.io build -t ubuntu:simplenote_develop - < dockerfile
-# $ sudo docker.io run ubuntu:simplenote_develop -v ./src/:/var/www
+# $ sudo docker.io build -t ubuntu:simplenote - < dockerfile
+# $ sudo docker.io run ubuntu:simplenote -v ./src/:/var/www
 # VERSION 1.0
 
 FROM ubuntu:latest
@@ -11,23 +11,25 @@ MAINTAINER Maxime Raynal - <me@maxproject.fr>
 #EXPOSE 80:8081
 
 # Make sure the package repository is up to date
-RUN echo 'deb http://ppa.launchpad.net/nginx/stable/ubuntu trusty main' >> /etc/apt/sources.list
-RUN echo 'deb-src http://ppa.launchpad.net/nginx/stable/ubuntu trusty main' >> /etc/apt/sources.list
+ADD sources.list /etc/apt/sources.list
 RUN apt-get -y update
 
 # Install prerequirement
-RUN apt-get install -y --force-yes nginx php5 vim php5-fpm multitail
+RUN apt-get install -y --force-yes nginx php5-sqlite php5-cli vim php5-fpm curl --fix-missing
+
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
 
 RUN mkdir /var/www/
 
-RUN chown www-data:www-data /var/www
+RUN chown -R www-data:www-data /var/www
 
-ADD simplenote-dev.nginx-config /etc/nginx/sites-available/simplenote-dev
+ADD symfony.nginx-config /etc/nginx/sites-available/symfony
 
-RUN ln -s /etc/nginx/sites-available/simplenote-dev /etc/nginx/sites-enabled/simplenote-dev
+RUN ln -s /etc/nginx/sites-available/symfony /etc/nginx/sites-enabled/symfony
 RUN rm /etc/nginx/sites-enabled/default
 
 ADD setup.sh /root/setup.sh
 RUN chmod u+x /root/setup.sh
 
-#ENTRYPOINT ["/root/setup.sh"]
+ENTRYPOINT ["/root/setup.sh"]
