@@ -1,3 +1,3 @@
 simple_note_web_app_homepage:
     path:     /
-    defaults: { _controller: SimpleNoteWebAppBundle:Default:index }
+    defaults: { _controller: SimpleNoteWebAppBundle:WebApp:index }
