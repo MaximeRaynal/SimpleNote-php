@@ -8,6 +8,6 @@ class WebAppController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('SimpleNoteWebAppBundle:Default:index.html.twig');
+        return $this->render('SimpleNoteWebAppBundle:Global:layout.html.twig');
     }
 }
