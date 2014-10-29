@@ -1,0 +1,15 @@
+{# Charge via assetics les principaux asset JS et CSS
+   présent sur toutes les pages #}
+{% block assets %}
+
+{% stylesheets '@SimpleNoteWebAppBundle/Resources/public/css/*' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+
+{% javascripts  '@SimpleNoteWebAppBundle/Resources/public/js/globals/jquery.js'
+                '@SimpleNoteWebAppBundle/Resources/public/js/globals/bootstrap.js'
+                '@SimpleNoteWebAppBundle/Resources/public/js/script/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{% endblock %}

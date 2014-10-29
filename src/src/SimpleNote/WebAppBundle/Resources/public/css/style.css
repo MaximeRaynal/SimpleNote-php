@@ -1,0 +1,77 @@
+/*
+    Fichier de style principal du projet
+    Contient les modifications apportées à Bootstrap
+    et les classes persos
+*/
+
+/*
+    Jeu de couleurs :
+    Vert        Jaune       Bleu
+    #00923E     #F8C100     #28166F
+
+*/
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.navbar {
+    background-color: #F7F7F7;
+}
+
+.navbar-nav li a, .navbar-brand {
+    color: #00923E;
+}
+
+.navbar-brand:hover {
+    color: #F8C100;
+}
+
+.tag-panel {
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    border-style: solid;
+    padding-left: 20px;
+    padding-top: 5px;
+    height: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.filter-box {
+
+}
+
+#tag-search-field {
+    border-radius: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+#tag-search-field:focus {
+    box-shadow: inset 0px 0px 3px 1px #cfcfcf;
+    border-color: #888888;
+}
+
+#tags-list li {
+    padding-top: 5px;
+    list-style-type: none;
+    color: #027719;
+    font-weight: bold;
+}
+
+#tags-list ul {
+    text-indent: 0px;
+    padding-left: 15px;
+}
+
+#tags-list li:before {
+    content: "#"; /* on affiche une chaîne de caractère */
+}

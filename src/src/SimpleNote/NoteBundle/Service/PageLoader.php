@@ -29,6 +29,7 @@ class PageLoader {
             $page->text = file_get_contents($file);
 
             $page->note = $note;
+            $note->addPage($page);
         }
 
     }
