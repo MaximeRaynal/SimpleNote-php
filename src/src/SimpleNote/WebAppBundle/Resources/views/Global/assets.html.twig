@@ -6,8 +6,11 @@
     <link rel="stylesheet" href="{{ asset_url }}" />
 {% endstylesheets %}
 
-{% javascripts  '@SimpleNoteWebAppBundle/Resources/public/js/globals/jquery.js'
+{% javascripts  '@SimpleNoteWebAppBundle/Resources/public/js/globals/angular.js'
+                '@SimpleNoteWebAppBundle/Resources/public/js/globals/angular-route.js'
+                '@SimpleNoteWebAppBundle/Resources/public/js/globals/jquery.js'
                 '@SimpleNoteWebAppBundle/Resources/public/js/globals/bootstrap.js'
+                '@SimpleNoteWebAppBundle/Resources/public/js/controller/*'
                 '@SimpleNoteWebAppBundle/Resources/public/js/script/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
