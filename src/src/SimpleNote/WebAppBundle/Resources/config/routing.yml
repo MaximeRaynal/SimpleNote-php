@@ -1,3 +1,7 @@
 simple_note_web_app_homepage:
     path:     /
     defaults: { _controller: SimpleNoteWebAppBundle:Default:index }
+
+simple_note_web_app_views:
+    path: /views/{resources}
+    defaults: { _controller: SimpleNoteWebAppBundle:Default:resources}
