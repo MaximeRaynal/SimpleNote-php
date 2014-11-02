@@ -9,7 +9,7 @@ namespace SimpleNote\NoteBundle\Entity;
 * Elle contient du texte rédigé au format Markdown
 * Cette élément n'est pas stocké en base de données mais local
 */
-public class Page {
+class Page implements \JsonSerializable{
 
     private $order;
 
@@ -23,6 +23,7 @@ public class Page {
     private $text;
 
     public function __construct() {
+
     }
 
     /**
@@ -42,7 +43,7 @@ public class Page {
      * Si c'est un setter : $this
      */
     public function __call($name, $arguments) {
-        $reflex = new ReflectionClass($this); //Unité de réflèxion
+        $reflex = new \ReflectionClass($this); //Unité de réflèxion
         $action = '';
         $requieredProperties = array();
         if ($name == 'get' || $name == 'set') { //Phase de détermination
@@ -83,6 +84,18 @@ public class Page {
         }
         return count($result) == 0 ? $this :
             (count($result) == 1 ? $result[$requieredProperties[0]] : $result);
+    }
+
+    /**
+     * Retourne tout sauf les tags (lazyLoading, convertit les dates en timestamp
+     */
+    public function jsonSerialize() {
+        $vars = get_object_vars($this);
+
+        //Pour éviter une récursion dans la sérialisation
+        unset($vars['note']);
+
+        return $vars;
     }
 
 }

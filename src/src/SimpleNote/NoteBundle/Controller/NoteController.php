@@ -3,7 +3,11 @@
 namespace SimpleNote\NoteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Response;
+
+use SimpleNote\NoteBundle\Entity\Note;
+use SimpleNote\NoteBundle\Service\PageLoader;
 
 class NoteController extends Controller
 {
@@ -32,5 +36,18 @@ class NoteController extends Controller
         $tags = array_unique($tags, SORT_STRING);
 
         return new Response(json_encode($tags), 200);
+    }
+
+    /**
+     * Retourne une note avec la liste de ces page charé
+     * @ParamConverter("note", class="SimpleNoteNoteBundle:Note")
+     */
+    public function noteByIdAction(Note $note) {
+
+        $pageLoader = $this->get('pageLoader');
+
+        $pageLoader->loadPages($note);
+
+        return new Response(json_encode($note), 200);
     }
 }

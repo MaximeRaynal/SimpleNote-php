@@ -1,8 +1,8 @@
 parameters:
-    pageLoader.class: SimpleNote\NoteBundle\Service\PageLoader
-    pageLoader.basePath: "/root"
+    PageLoader.class: SimpleNote\NoteBundle\Service\PageLoader
+    PageLoader.basePath: "/var/www/app/data/"
 
 services:
-    pageLoader:
-        class: "%pageLoader.class%"
-        arguments: ["%pageLoader.basePath%"]
+    PageLoader:
+        class: "%PageLoader.class%"
+        arguments: ["%PageLoader.basePath%"]

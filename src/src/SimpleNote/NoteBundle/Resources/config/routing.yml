@@ -11,3 +11,11 @@ simple_note_tagsList:
     methods: GET
     requirements:
         _format: json
+
+simple_note_noteById:
+    path: /note/id-{id}.{format}
+    defaults: { _controller: SimpleNoteNoteBundle:Note:noteById }
+    methods: GET
+    requirements:
+        id: \d+
+        format: json

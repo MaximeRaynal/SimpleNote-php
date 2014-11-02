@@ -33,7 +33,8 @@ class Note implements \JsonSerializable{
     private $isCrypted;
 
     public function __construct() {
-
+        $pages = array();
+        $tags = ArrayCollection();
     }
 
     /**
@@ -227,6 +228,10 @@ class Note implements \JsonSerializable{
         $vars['lastUpdateDate']->getTimestamp();
 
         return $vars;
+    }
+
+    public function addPage(Page $page) {
+        $this->pages[$page->getOrder()] = $page;
     }
 
 

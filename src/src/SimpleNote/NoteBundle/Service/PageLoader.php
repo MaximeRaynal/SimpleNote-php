@@ -9,12 +9,17 @@ class PageLoader {
 
     private $basePath;
 
-    public function($basePath) {
+    public function __construct($basePath) {
         $this->basePath = $basePath;
     }
 
     public function loadPages(Note $note) {
-        $directoryContent = scandir($this->basePath . $note->name);
+
+        // On récupère le contenu du dossier correspondant
+        // On filtre en retirant . et ..
+        $directoryContent =
+            array_diff(scandir($this->basePath . $note->getName()),
+                        array('.', '..'));
 
         if (! $directoryContent) {
             throw new Exception("Error Processing Request", 1);
@@ -26,9 +31,11 @@ class PageLoader {
             $page->setOrder(split('_', $file)[0]);
             $page->setName(split('_', $file)[1]);
 
-            $page->text = file_get_contents($file);
+            $page->setText(
+                file_get_contents(
+                        $this->basePath . $note->getName() . '/' .$file));
 
-            $page->note = $note;
+            $page->setNote($note);
             $note->addPage($page);
         }
 
