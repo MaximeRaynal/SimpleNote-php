@@ -5,27 +5,27 @@ namespace SimpleNote\NoteBundle\Entity;
 /**
  * Les tags servent à marquer les notes
  */
-class Tag {
+class Tag implements \JsonSerializable {
 
     /**
      * La chaine marquant de tag, sans espace
      * sans #
      */
-    public $name;
+    private $name;
 
     /**
      * On ajoute la possibilitées de taillé un tags
      */
-    public $description;
+    private $description;
 
     /**
      * Le parent hierarchique du tag.
      * Lorsque l'on affecte un tag à une note, on
      * y affecte aussi c'est parent
      */
-    public $parent;
+    private $parent;
 
-    public $childs;
+    private $childs;
 
     public function __construct() {
 
@@ -88,5 +88,10 @@ class Tag {
         }
 
         return $string;
+    }
+
+    public function jsonSerialize() {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 }
