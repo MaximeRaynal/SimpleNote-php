@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Elle possède un ensemble de tag
  * Les pages ne sont pas stocké en base de données mais en local
  */
-class Note {
+class Note implements \JsonSerializable{
 
     private $id;
 
@@ -216,4 +216,18 @@ class Note {
     {
         return $this->tags;
     }
+
+    /**
+     * Retourne tout sauf les tags (lazyLoading, convertit les dates en timestamp
+     */
+    public function jsonSerialize() {
+        $vars = get_object_vars($this);
+
+        $vars['creationDate']->getTimestamp();
+        $vars['lastUpdateDate']->getTimestamp();
+
+        return $vars;
+    }
+
+
 }

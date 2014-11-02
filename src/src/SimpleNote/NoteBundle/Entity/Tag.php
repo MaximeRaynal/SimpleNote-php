@@ -7,14 +7,24 @@ namespace SimpleNote\NoteBundle\Entity;
  */
 class Tag {
 
+    /**
+     * La chaine marquant de tag, sans espace
+     * sans #
+     */
     public $name;
 
+    /**
+     * On ajoute la possibilitées de taillé un tags
+     */
     public $description;
 
-    // Non utilisé dans la v1
+    /**
+     * Le parent hierarchique du tag.
+     * Lorsque l'on affecte un tag à une note, on
+     * y affecte aussi c'est parent
+     */
     public $parent;
 
-    // Non utilisé dans la v1
     public $childs;
 
     public function __construct() {
@@ -66,5 +76,17 @@ class Tag {
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function __toString() {
+        $string = $this->name;
+
+        $current = $this->parent;
+        while ($current != null) {
+            $string = $current->name . '/' . $string;
+            $current = $current->parent;
+        }
+
+        return $string;
     }
 }

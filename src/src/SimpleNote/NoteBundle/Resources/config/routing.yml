@@ -1,3 +1,13 @@
-simple_note_note_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: SimpleNoteNoteBundle:Default:index }
+simple_note_notesList:
+    path:     /notes.{_format}
+    defaults: { _controller: SimpleNoteNoteBundle:Note:notesList }
+    methods: GET
+    requirements:
+        _format: json
+
+simple_note_tagsList:
+    path:     /tags.{_format}
+    defaults: { _controller: SimpleNoteNoteBundle:Note:tagsList }
+    methods: GET
+    requirements:
+        _format: json

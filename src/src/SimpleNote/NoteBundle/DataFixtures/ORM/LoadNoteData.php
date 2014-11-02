@@ -27,6 +27,22 @@ class LoadNoteData extends AbstractFixture implements OrderedFixtureInterface {
         $note->setIsCrypted(false);
         $note->addTag($this->getReference('t1'));
 
+        $manager->persist($note);
+
+        $note = new Note();
+
+        $note->setName('Note 2');
+        $note->setDescription('La seconde note');
+        $note->setPrivacyState('public');
+        $note->setCreationDate(new DateTime('now'));
+        $note->setLastUpdateDate(new DateTime('now'));
+        $note->setIsCrypted(false);
+        $note->addTag($this->getReference('t1'));
+        $note->addTag($this->getReference('t2'));
+
+
+        $manager->persist($note);
+
         $manager->flush();
     }
 
